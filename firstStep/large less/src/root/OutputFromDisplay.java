@@ -7,7 +7,7 @@ public class OutputFromDisplay {
     }
 
     public void requestInputTheNumber(){
-        System.out.println("Введите число");
+        System.out.println("Введите целое число число от 1 до 100");
     }
 /*
     public void outputFailResult(){
@@ -20,12 +20,12 @@ public class OutputFromDisplay {
 
     public void outputNeedLargeNumber(){
         System.out.println("Вы не угадали");
-        System.out.println("Введите число с большим значением");
+        System.out.println("Введите целое число с большим значением");
     }
 
     public void outputNeedLessNumber(){
         System.out.println("Вы не угадали");
-        System.out.println("Введите число с меньшим значением");
+        System.out.println("Введите целое число с меньшим значением");
     }
 
 }

@@ -2,8 +2,6 @@ package root;
 
 public class Main {
 
-    private boolean nextGame = true;
-
     public static void main(String[] args) {
     Game game = new Game();
     game.start();
