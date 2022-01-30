@@ -13,19 +13,19 @@ public class Target {
 
     public void addStep (){
         getNameStep();
-        if (nameStep != null) {
+        if (nameStep.isEmpty()) {
             Step step = new Step(nameStep);
         }
         else addStep();
 
     }
 
-    public void getStepList() {
+    public void getTargetList() {
         System.out.println(getName());
-        iteratorList();
+        iteratorStepList();
     }
 
-    private void iteratorList(){
+    private void iteratorStepList(){
         for (Step iteratorList : stepList){
             System.out.print(iteratorList.getName()+" "+iteratorList.getDone());
         }
@@ -40,8 +40,32 @@ public class Target {
         return name;
     }
 
-    public void createTargetList(){
+    public void createTargetList() {
+
+        boolean nextAddStep = false;
+
         setName();
-        addStep();
+        do {
+            addStep();
+            System.out.println("Еще шаг?");
+            nextAddStep = checkEqualsYorN();
+        }
+        while (nextAddStep = true);
     }
+
+    private boolean checkEqualsYorN(){
+
+        final String y = "Y";
+        final String n = "N";
+        boolean check = false;
+
+        System.out.println("Enter "+ y + " or "+ n);
+        String buffer = inputUserData.getData();
+        if (buffer.equals(y)) check = true;
+        else if (buffer.equals(n)) check = false;
+        else checkEqualsYorN();
+        return check;
+    }
+
+
 }
