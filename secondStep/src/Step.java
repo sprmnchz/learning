@@ -3,7 +3,8 @@ public class Step {
     private String name;
     private boolean done;
 
-    public Step (String name){
+    Step (String name){
+        setName(name);
         done = false;
     }
 

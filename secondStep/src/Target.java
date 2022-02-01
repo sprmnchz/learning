@@ -9,31 +9,42 @@ public class Target {
     private void getNameStep(){
         System.out.println("Enter name step");
         nameStep = inputUserData.getData();
+
     }
 
     public void addStep (){
         getNameStep();
         if (nameStep.isEmpty()) {
-            Step step = new Step(nameStep);
+            addStep();
         }
-        else addStep();
+        else {
+            var step = new Step(nameStep);
+            stepList.add(step);
+        }
 
     }
 
     public void getTargetList() {
+        System.out.println("Name List");
+        System.out.println("______________________");
         System.out.println(getName());
+        System.out.println("______________________");
+        System.out.println("Name step " + " | " + "State step");
+        System.out.println("______________________");
         iteratorStepList();
     }
 
     private void iteratorStepList(){
         for (Step iteratorList : stepList){
-            System.out.print(iteratorList.getName()+" "+iteratorList.getDone());
+            System.out.println(iteratorList.getName() + " " + "|" + " " + iteratorList.getDone());
+            System.out.println("-------------");
         }
     }
 
     public void setName() {
         System.out.println("Введите имя листа шагов");
         this.name = inputUserData.getData();
+
     }
 
     public String getName() {
@@ -48,22 +59,22 @@ public class Target {
         do {
             addStep();
             System.out.println("Еще шаг?");
-            nextAddStep = checkEqualsYorN();
+            nextAddStep = checkExit();
         }
-        while (nextAddStep = true);
+        while (nextAddStep == true);
     }
 
-    private boolean checkEqualsYorN(){
+    private boolean checkExit(){
 
-        final String y = "Y";
-        final String n = "N";
-        boolean check = false;
+        final String y = "y";
+        final String n = "n";
+        boolean check = true;
 
-        System.out.println("Enter "+ y + " or "+ n);
+        System.out.println("Finish adding?" + y + " or " + n);
         String buffer = inputUserData.getData();
-        if (buffer.equals(y)) check = true;
-        else if (buffer.equals(n)) check = false;
-        else checkEqualsYorN();
+        if (buffer.equalsIgnoreCase(y)) check = true;
+        else if (buffer.equalsIgnoreCase(n)) check = false;
+        else checkExit();
         return check;
     }
 
