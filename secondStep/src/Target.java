@@ -8,7 +8,7 @@ public class Target {
 
     private void getNameStep(){
         System.out.println("Enter name step");
-        nameStep = inputUserData.getData();
+        nameStep = InputUserData.getData();
 
     }
 
@@ -43,7 +43,7 @@ public class Target {
 
     public void setName() {
         System.out.println("Введите имя листа шагов");
-        this.name = inputUserData.getData();
+        this.name = InputUserData.getData();
 
     }
 
@@ -53,7 +53,7 @@ public class Target {
 
     public void createTargetList() {
 
-        boolean nextAddStep = false;
+        boolean nextAddStep;
 
         setName();
         do {
@@ -61,7 +61,7 @@ public class Target {
             System.out.println("Еще шаг?");
             nextAddStep = checkExit();
         }
-        while (nextAddStep == true);
+        while (nextAddStep);
     }
 
     private boolean checkExit(){
@@ -71,12 +71,14 @@ public class Target {
         boolean check = true;
 
         System.out.println("Finish adding?" + y + " or " + n);
-        String buffer = inputUserData.getData();
+        String buffer = InputUserData.getData();
         if (buffer.equalsIgnoreCase(y)) check = true;
         else if (buffer.equalsIgnoreCase(n)) check = false;
         else checkExit();
         return check;
     }
+
+    // I need to create a collection of target
 
 
 }
