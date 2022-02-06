@@ -9,7 +9,6 @@ public class Target {
     private void getNameStep(){
         System.out.println("Enter name step");
         nameStep = InputUserData.getData();
-
     }
 
     public void addStep (){
@@ -17,7 +16,7 @@ public class Target {
         if (nameStep.isEmpty()) {
             addStep();
         }
-        else {
+        if (!nameStep.equalsIgnoreCase("exit")) {
             var step = new Step(nameStep);
             stepList.add(step);
         }
@@ -26,18 +25,18 @@ public class Target {
 
     public void getTargetList() {
         System.out.println("Name List");
-        System.out.println("______________________");
+        System.out.println("----------");
         System.out.println(getName());
-        System.out.println("______________________");
-        System.out.println("Name step " + " | " + "State step");
-        System.out.println("______________________");
+        System.out.println("----------");
+        System.out.println("    " + "Name step " + " | " + "State step");
+        System.out.println("    " + "----------");
         iteratorStepList();
     }
 
     private void iteratorStepList(){
         for (Step iteratorList : stepList){
-            System.out.println(iteratorList.getName() + " " + "|" + " " + iteratorList.getDone());
-            System.out.println("-------------");
+            System.out.println("    " + iteratorList.getName() + " " + "|" + " " + iteratorList.getDone());
+            System.out.println("    " + "-------------");
         }
     }
 
@@ -51,34 +50,35 @@ public class Target {
         return name;
     }
 
-    public void createTargetList() {
+    public void createTarget() {
 
         boolean nextAddStep;
 
         setName();
         do {
             addStep();
-            System.out.println("Еще шаг?");
-            nextAddStep = checkExit();
+            //System.out.println("Enter next step");
+            nextAddStep = checkExit(nameStep);
         }
         while (nextAddStep);
+
     }
 
-    private boolean checkExit(){
+    private boolean checkExit(String inputString){
 
-        final String y = "y";
-        final String n = "n";
+        final String exit = "exit";
         boolean check = true;
 
-        System.out.println("Finish adding?" + y + " or " + n);
-        String buffer = InputUserData.getData();
-        if (buffer.equalsIgnoreCase(y)) check = true;
-        else if (buffer.equalsIgnoreCase(n)) check = false;
-        else checkExit();
+        System.out.println(" 'exit' for exit");
+        if (inputString.equalsIgnoreCase(exit)) {
+            check = false;
+        }
         return check;
     }
 
-    // I need to create a collection of target
+    public Target factoryTarget(){
+        return new Target();
+    }
 
 
 }
