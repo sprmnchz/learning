@@ -4,33 +4,34 @@ import java.util.Map;
 public class TargetList {
 
     private HashMap<Integer, Target> targetList = new HashMap<>();
-    private int countKeyTargetList = 1;
+    private Target target = new Target();
+    private int index = 1;
 
 
-    public void addInTargetList(Target target){
-        targetList.put(countKeyTargetList, target);
-        countKeyTargetList++;
+    public void add(Target target){
+        index = targetList.size();
+        if (index != 0) index++;
+        targetList.put(index, target);
     }
 
-    private void iteratorTargetList (){
+    private void List(){
         for (Map.Entry <Integer, Target> iter : targetList.entrySet()) {
             var target = iter.getValue();
-            System.out.println(target.getName());
+            //System.out.println(target.getName());
             target.getTargetList();
         }
     }
 
-    public void displayTargetList(){
-        iteratorTargetList();
+    public Target getTarget(int index){
+        target = targetList.get(index);
+        return target;
     }
 
-    public static void main(String[] args) {
-        var targetList = new TargetList();
-        for (int i = 0;i < 5; i++){
-
-        }
-        targetList.displayTargetList();
+    public void delete(int index){
+        targetList.remove(index);
     }
 
-
+    public void show(){
+        List();
+    }
 }

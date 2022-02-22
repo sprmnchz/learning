@@ -4,7 +4,7 @@ public class Step {
     private boolean done;
 
     Step (String name){
-        setName(name);
+        this.name =name;
         done = false;
     }
 
@@ -12,15 +12,18 @@ public class Step {
         return done;
     }
 
-    public void setDone(boolean done) {
-        this.done = done;
+    public void changeDone(boolean done) {
+        if (done == true)
+            this.done = false;
+        else
+            this.done = true;
     }
 
     public String getName() {
         return name;
     }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String nameStep) {
+        this.name = nameStep;
     }
+
 }

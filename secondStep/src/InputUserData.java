@@ -2,26 +2,35 @@ import java.util.Scanner;
 
 public class InputUserData {
 
-    private static String buffer;
-    private static int count=0;
+    private static String bufferString;
+    private static int bufferInt;
+    private static int countStep=0;
+    private static int countTarget=0;
+    private static int countExit=0;
+    private static Scanner input = new Scanner(System.in);
 
-    private static void inputString(){
-        Scanner input = new Scanner(System.in);
-        buffer = input.nextLine();
+
+    public static String getStringData(){
+        //bufferString = input.nextLine();
+        bufferString = "Step"+ Integer.toString(countStep);
+        if (countExit==0){
+            bufferString = "Target"+ countTarget;
+        }
+        countStep++;
+        countExit++;
+        if (countExit == 4){
+            bufferString = "exit";
+        }
+        if (bufferString.equalsIgnoreCase("exit")) {
+            countExit = 0;
+            countTarget++;
+        }
+        return bufferString;
     }
 
-    public static String getData(){
-        //inputString();
-        buffer = "Step"+ Integer.toString(count);
-        count++;
-        if (count == 4){
-            buffer= "exit";
-            count = 0;
-        }
-        if (buffer.equalsIgnoreCase("exit")) {
-            count = 0;
-        }
-        return buffer;
+    public static int getIntData (){
+        bufferInt = input.nextInt();
+        return bufferInt;
     }
 
 }

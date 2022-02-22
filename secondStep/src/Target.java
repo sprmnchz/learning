@@ -3,77 +3,43 @@ import java.util.ArrayList;
 public class Target {
 
     private String name;
-    private String nameStep;
+    private int indexItem;
     private ArrayList<Step> stepList = new ArrayList<>();
 
-    private void getNameStep(){
-        System.out.println("Enter name step");
-        nameStep = InputUserData.getData();
-    }
 
-    public void addStep (){
-        getNameStep();
-        if (nameStep.isEmpty()) {
-            addStep();
-        }
-        if (!nameStep.equalsIgnoreCase("exit")) {
-            var step = new Step(nameStep);
-            stepList.add(step);
-        }
 
+    public void addStep(Step step){
+        stepList.add(step);
     }
 
     public void getTargetList() {
+        System.out.println(" ");
         System.out.println("Name List");
         System.out.println("----------");
         System.out.println(getName());
         System.out.println("----------");
         System.out.println("    " + "Name step " + " | " + "State step");
-        System.out.println("    " + "----------");
-        iteratorStepList();
+        System.out.println("    " + "-------------");
+        showStepList();
     }
 
-    private void iteratorStepList(){
+    private void showStepList(){
         for (Step iteratorList : stepList){
             System.out.println("    " + iteratorList.getName() + " " + "|" + " " + iteratorList.getDone());
             System.out.println("    " + "-------------");
         }
     }
 
-    public void setName() {
-        System.out.println("Введите имя листа шагов");
-        this.name = InputUserData.getData();
-
+    public void setName(String nameTarget) {
+        this.name = nameTarget;
     }
 
     public String getName() {
         return name;
     }
 
-    public void createTarget() {
-
-        boolean nextAddStep;
-
-        setName();
-        do {
-            addStep();
-            //System.out.println("Enter next step");
-            nextAddStep = checkExit(nameStep);
-        }
-        while (nextAddStep);
-
-    }
-
-    private boolean checkExit(String inputString){
-
-        final String exit = "exit";
-        boolean check = true;
-
-        System.out.println(" 'exit' for exit");
-        if (inputString.equalsIgnoreCase(exit)) {
-            check = false;
-        }
-        return check;
+    public void deleteStep(int indexItem){
+        stepList.remove(indexItem);
     }
 
     public Target factoryTarget(){
