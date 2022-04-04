@@ -4,87 +4,65 @@ public class Menu {
 
     private static final ArrayList <String> generalMenu = new ArrayList<>();
     private static final ArrayList <String> editMenu = new ArrayList<>();
-    private static final ArrayList <String> editTargetList = new ArrayList<>();
-    private static final ArrayList <String> editTarget = new ArrayList<>();
-    private static final ArrayList <String> editStep = new ArrayList<>();
+    private static final ArrayList <String> editTargetMenu = new ArrayList<>();
+    private static final ArrayList <String> editStepMenu = new ArrayList<>();
 
-    private static void GeneralMenu(){
-        generalMenu.add("T: Target list");
-        generalMenu.add("C: Create target");
+    private static void setGeneralMenu(){
+        generalMenu.add("CT: Create target");
+        generalMenu.add("ET: Edit target");
+        generalMenu.add("DT: Delete target");
         generalMenu.add("E: Exit");
     }
 
-    private static void editMenu(){
-        editMenu.add("EL: Edit target list");
-        editMenu.add("ET: Edit target");
+    private static void setEditMenu(){
         editMenu.add("ES: Edit step");
+        editMenu.add("ET: Edit target");
     }
 
-    private static void editTargetList () {
-        editTargetList.add("dt: Delete target");
-        //editTargetList.add("at: Add target");
-        editTargetList.add("e: Exit edit");
+    private static void setEditTargetMenu() {
+        editTargetMenu.add("rt: Rename target");
+        editTargetMenu.add("as: Add step");
+        editTargetMenu.add("ds: Delete step");
+        editTargetMenu.add("e: Exit edit");
     }
 
-    private static void editTarget () {
-        editTarget.add("rt: Rename target");
-        editTarget.add("as: Add step");
-        editTarget.add("ds: Delete step");
-        editTarget.add("e: Exit edit");
+    private static void setEditStepMenu() {
+        editStepMenu.add("rs: Rename step");
+        editStepMenu.add("fs: Finish step");
+        editStepMenu.add("ds: Finish step");
+        editStepMenu.add("e: Exit edit");
     }
 
-    private static void editStep () {
-        editStep.add("rs: Rename step");
-        editStep.add("fs: Finish step");
-        editStep.add("e: Exit edit");
+    private static void setAllAppMenu(){
+        setGeneralMenu();
+        setEditMenu();
+        setEditTargetMenu();
+        setEditStepMenu();
     }
 
     public static void showGeneralMenu(){
-        System.out.println();
-        GeneralMenu();
         showMenu(generalMenu);
     }
 
-    public static void showEditMenu(){
-        System.out.println();
-        editMenu();
+    public static void showTargetMenu(){
+        showMenu(editStepMenu);
         showMenu(editMenu);
     }
 
-    public static void showEditTargetList(){
-        System.out.println();
-        editTargetList();
-        showMenu(editTargetList);
+    public static void showEditStepMenu () {
+        showMenu(editStepMenu);
     }
 
-    public static void showEditTarget(){
-        System.out.println();
-        editTarget();
-        showMenu(editTarget);
-    }
-
-    public static void showEditStep(){
-        System.out.println();
-        editStep();
-        showMenu(editStep);
-    }
+    public static void
 
     private static void showMenu(ArrayList <String> menu) {
-        for (String iterMenu : menu) {
-            System.out.print(iterMenu + " | ");
+        for (String menuItem : menu) {
+            System.out.print(menuItem + " | ");
         }
     }
 
     public static void main(String[] args) {
-        showGeneralMenu();
-        System.out.println();
-        showEditMenu();
-        System.out.println();
-        showEditTargetList();
-        System.out.println();
-        showEditTarget();
-        System.out.println();
-        showEditStep();
-    }
+        setAllAppMenu();
 
+    }
 }
